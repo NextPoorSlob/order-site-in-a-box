@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+rectangle user as usr
+rectangle security as sec
+rectangle order as ord
+rectangle inventory as inv
+rectangle payment as pay
+
+@enduml

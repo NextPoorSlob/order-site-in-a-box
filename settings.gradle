@@ -1,0 +1,2 @@
+rootProject.name = "order-site-in-a-box"
+include "user-service"

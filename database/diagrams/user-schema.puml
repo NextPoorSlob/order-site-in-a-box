@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "user" as user {
+  *id : number <<generated>>
+  --
+  *first_name : text
+  *last_name : text
+}
+
+entity "address" as address {
+  *id : number <<generated>>
+  --
+  *user_id : number <<FK>>
+  *type_id : number <<FK>>
+  *address : text
+}
+
+entity "address_type" as address_type {
+  *id : number <<generated>>
+  --
+  name : text
+  description : text
+}
+
+user ||..o{ address : id --> user_id
+address }o..|| address_type : id --> type_id
+
+@enduml
