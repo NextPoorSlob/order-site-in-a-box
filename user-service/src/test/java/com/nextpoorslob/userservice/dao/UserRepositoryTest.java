@@ -1,6 +1,7 @@
 package com.nextpoorslob.userservice.dao;
 
 import com.nextpoorslob.userservice.model.Address;
+import com.nextpoorslob.userservice.model.AddressType;
 import com.nextpoorslob.userservice.model.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,11 +25,18 @@ class UserRepositoryTest {
     @Resource
     private AddressRepository addressRepository;
 
+    @Resource
+    private AddressTypeRepository addressTypeRepository;
+
     @Test
     void givenUser_whenSave_thenGetOk() {
 
+        AddressType addressType = new AddressType(AddressType.Value.MAILING, "Mail-to address");
+        addressType.setType("mailing");
+        addressTypeRepository.save(addressType);
+
         User user = new User("John", "Smith");
-        Address address = new Address("123 Main Street, Chicago, IL, 60656");
+        Address address = new Address("123 Main Street, Chicago, IL, 60656", addressType);
         user.addAddress(address);
         userRepository.save(user);
         addressRepository.save(address);

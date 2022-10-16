@@ -25,9 +25,14 @@ public class Address {
     @JoinColumn(name = "user_id")
     private User user;
 
-    public Address(String data) {
+    @ManyToOne
+    @JoinColumn(name = "address_type_id")
+    private AddressType addressType;
+
+    public Address(String data, AddressType addressType) {
         id = null;
         this.data = data;
+        this.addressType = addressType;
         user = null;
     }
 }

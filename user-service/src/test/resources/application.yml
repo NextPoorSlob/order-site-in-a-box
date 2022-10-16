@@ -1,9 +1,12 @@
 spring:
   datasource:
     driverClassName: org.h2.Driver
-    password: ''
-    url: jdbc:h2:mem:jpa_jbd
+    password: password
+    url: jdbc:h2:file:../build/db/testdb
     username: sa
+  h2:
+    console:
+      enabled: true
   jpa:
     hibernate:
       ddl-auto: create-drop
