@@ -49,11 +49,9 @@ class UserRepositoryTest {
         assertThat(address.getUser().getId(), equalTo(user.getId()));
 
         Optional<User> retrievedUser = userRepository.findById(user.getId());
-        if (retrievedUser.isPresent()) {
-            assertThat(retrievedUser.get().getFirstName(), equalTo("John"));
-        } else {
-            fail("Could not retrieve saved user");
-        }
+        retrievedUser.ifPresentOrElse(
+                u -> assertThat(u.getFirstName(), equalTo("John")),
+                () -> fail("User not found!"));
     }
 
 }

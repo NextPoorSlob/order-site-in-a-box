@@ -4,3 +4,7 @@ This microservice provides CRUD operations for the User domain.  This does not i
 data, which is handled by the security domain.
 
 ## Endpoints
+See Swagger endpoint at <server>/swagger-ui/index.html for details.  For example,
+```shell
+http://localhost:8080/swagger-ui/index.html
+```
